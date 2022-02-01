@@ -17,34 +17,34 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class ConsumerApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ConsumerApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(ConsumerApplication.class, args);
+	}
 
-    @RestController
-    public class HatConsumerResource {
+	@RestController
+	public class HatConsumerResource {
 
-        @Value( "${producer.port}" )
-        private Integer producerPort;
+		@Value( "${producer.port}" )
+		private Integer producerPort;
 
-        private final RestTemplate restTemplate;
+		private final RestTemplate restTemplate;
 
-        HatConsumerResource(RestTemplateBuilder restTemplateBuilder) {
-            this.restTemplate = restTemplateBuilder.build();
-        }
+		HatConsumerResource(RestTemplateBuilder restTemplateBuilder) {
+			this.restTemplate = restTemplateBuilder.build();
+		}
 
-        @RequestMapping("/wearhat/{hatId}")
-        String getMessage(@PathVariable("hatId") Long personId, @RequestHeader("authorization") String authorizationHeader) {
+		@RequestMapping("/wearhat/{hatId}")
+		String getMessage(@PathVariable("hatId") Long personId, @RequestHeader("authorization") String authorizationHeader) {
 
-            HttpHeaders headers = new HttpHeaders();
-            headers.set("Authorization", authorizationHeader);
-            HttpEntity<Void> requestEntity = new HttpEntity<>(headers);
+			HttpHeaders headers = new HttpHeaders();
+			headers.set("Authorization", authorizationHeader);
+			HttpEntity<Void> requestEntity = new HttpEntity<>(headers);
 
-            ResponseEntity<Hat> response = restTemplate.exchange("http://localhost:"+producerPort+"/hat/{hatId}", HttpMethod.GET, requestEntity, Hat.class, personId);
-            Hat hat = response.getBody();
+			ResponseEntity<Hat> response = restTemplate.exchange("http://localhost:"+producerPort+"/hat/{hatId}", HttpMethod.GET, requestEntity, Hat.class, personId);
+			Hat hat = response.getBody();
 
-            return "Enjoy your new " + hat.getName();
-        }
+			return "Enjoy your new " + hat.getName();
+		}
 
-    }
+	}
 }
