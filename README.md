@@ -1,4 +1,4 @@
-# Spring Cloud Sleuth Example
+# Spring Cloud Contract Example
 
 This example app shows you how to use Spring Cloud Contract to write better integration tests.
 
