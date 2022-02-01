@@ -24,7 +24,7 @@ public class ConsumerApplication {
     @RestController
     public class HatConsumerResource {
 
-        @Value( "${producer.port}" )
+        @Value("${producer.port}")
         private Integer producerPort;
 
         private final RestTemplate restTemplate;
@@ -40,7 +40,7 @@ public class ConsumerApplication {
             headers.set("Authorization", authorizationHeader);
             HttpEntity<Void> requestEntity = new HttpEntity<>(headers);
 
-            ResponseEntity<Hat> response = restTemplate.exchange("http://localhost:"+producerPort+"/hat/{hatId}", HttpMethod.GET, requestEntity, Hat.class, personId);
+            ResponseEntity<Hat> response = restTemplate.exchange("http://localhost:" + producerPort + "/hat/{hatId}", HttpMethod.GET, requestEntity, Hat.class, personId);
             Hat hat = response.getBody();
 
             return "Enjoy your new " + hat.getName();

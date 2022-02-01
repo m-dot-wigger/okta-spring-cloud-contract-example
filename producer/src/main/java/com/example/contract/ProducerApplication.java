@@ -21,7 +21,7 @@ public class ProducerApplication {
             http.authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-                .oauth2ResourceServer().jwt(); // replace .jwt() with .opaqueToken() for Opaque Token case
+                .oauth2ResourceServer().jwt();
         }
     }
 }

@@ -19,7 +19,7 @@ public class HatController {
         Hat hat = hatService.findHatById(id);
         if (hat == null) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Not Found"
+                HttpStatus.NOT_FOUND, "Not Found"
             );
         }
         return hat;
