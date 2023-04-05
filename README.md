@@ -52,6 +52,10 @@ Once you have an access token, set it as a `TOKEN` environment variable in a ter
 TOKEN=eyJraWQiOiJYa2pXdjMzTDRBYU1ZSzNGM...
 ```
 
+windows
+
+set TOKEN=ajlfkjselkfj....
+
 ## Start the Apps
 
 Start each application in separate terminal windows using your IDE or `./mvnw spring-boot:run`.
