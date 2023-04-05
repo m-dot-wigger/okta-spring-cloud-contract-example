@@ -14,6 +14,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureStubRunner(ids = {"com.example:producer:+:stubs:8100"}, stubsMode = StubRunnerProperties.StubsMode.LOCAL)
 public class ContractIntegrationTest {
 
+    //eigentlich bereits durch das im Backend automatisch generierten Integrationstest
+
+    //hier nur für demozwecke, dass der stub wirklich das macht, was im contract vom producer definiert ist
+
     @Test
     public void get_hat1() {
         RestTemplate restTemplate = new RestTemplate();
